@@ -1,0 +1,1519 @@
+/**********
+ * COMPAT *
+ **********/
+
+/* reset styles to sanity */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+/* set 1em to 10px */
+body
+{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 62.5%;
+    line-height: 1;
+}
+
+/* clearfix */
+.clearfix:after 
+{
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix 
+{ 
+    display: inline-block;
+}
+.clearfix 
+{ 
+    display: block;
+}
+* html .clearfix 
+{ 
+    height: 1%;
+}
+
+/*********
+ * FONTS *
+ *********/
+
+@font-face {
+  font-family: 'odkbuild';
+  src:  url('/images/odkbuild.eot?8723aa');
+  src:  url('/images/odkbuild.eot?8723aa#iefix') format('embedded-opentype'),
+    url('/images/odkbuild.ttf?8723aa') format('truetype'),
+    url('/images/odkbuild.woff?8723aa') format('woff'),
+    url('/images/odkbuild.svg?8723aa#odkbuild') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon, .ui-icon {
+  font-family: 'odkbuild' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/***********
+ * WIDGETS *
+ ***********/
+
+/* jqm */
+.jqmOverlay { background-color: #000; }
+
+.modal
+{
+    background-color: #fff;
+    -moz-box-shadow: 0 0 1em #222;
+    -webkit-box-shadow: 0 0 1em #222;
+    color: #333;
+    display: none;
+    left: 50%;
+    margin-left: -30em;
+    padding: 2em;
+    position: fixed;
+    top: 17%;
+    width: 60em;
+}
+.modal.shown
+{
+    display: block;
+    z-index: 3000;
+}
+
+.modal h3
+{
+    color: #999;
+    font-size: 2.5em;
+    margin-bottom: 0.7em;
+}
+.modal h4
+{
+    font-size: 1.3em;
+    margin-top: 1em;
+}
+
+.modal .warningMessage
+{
+    color: #a20f0f;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0.3em
+}
+
+.modal p
+{
+    font-size: 1.2em;
+    padding-bottom: 1em;
+}
+.modal .modalContents
+{
+    margin: 0 1.5em 1em;
+}
+.modal .modalButtonContainer
+{
+    margin-top: 1.5em;
+}
+.modal .modalButton
+{
+    color: #666;
+    font-size: 1.3em;
+    letter-spacing: -1px;
+    padding: 0.5em;
+}
+.modal .modalButton:hover
+{
+    background-color: #f0f0f0;
+}
+
+.modal .modalLoadingOverlay
+{
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.7);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.modal .modalLoadingOverlay .spinner
+{
+    left: calc(50% - 1.5em);
+    position: absolute;
+    top: 3em;
+}
+
+#templates
+{
+    display: none;
+}
+
+form label
+{
+    display: block;
+    height: 25px;
+    font-size: 1.2em;
+    line-height: 25px;
+    margin-bottom: -25px;
+}
+form input
+{
+    margin-bottom: 0.5em;
+    margin-left: 7em;
+}
+
+.toast
+{
+    background-color: #fff;
+    bottom: -15em;
+    -moz-box-shadow: 0 0 1em #222;
+    -webkit-box-shadow: 0 0 1em #222;
+    color: #444;
+    font-size: 1.4em;
+    height: 10em;
+    right: 5em;
+    padding: 2em;
+    padding-top: 1.3em;
+    position: absolute;
+    text-align: center;
+    width: 15em;
+    z-index: 20;
+}
+
+#surveyToast
+{
+    background-color: #673ab7;
+    color: #fff;
+    overflow: hidden;
+}
+#surveyToast h2 { color: #eee; }
+#surveyToast p { padding: 0.6em 0 1em; }
+#surveyToast a { color: #fff; }
+#surveyToast #launchSurvey
+{
+    background-color: #fff;
+    border-radius: 0.2em;
+    color: #673ab7;
+    display: block;
+    font-weight: bold;
+    float: left;
+    padding: 0.5em 0.7em 0.4em;
+}
+#surveyToast #dismissSurvey
+{
+    color: #ddd;
+    display: block;
+    float: right;
+    font-size: 0.8em;
+    line-height: 2.5em;
+}
+
+@-webkit-keyframes spinspin
+{
+    from { transform: rotateZ(0deg); }
+    to { transform: rotateZ(-360deg); }
+}
+@-moz-keyframes spinspin
+{
+    from { transform: rotateZ(0deg); }
+    to { transform: rotateZ(-360deg); }
+}
+@keyframes spinspin
+{
+    from { transform: rotateZ(0deg); }
+    to { transform: rotateZ(-360deg); }
+}
+.spinner
+{
+    height: 3em;
+    width: 3em;
+}
+.spinnerInner
+{
+    height: 2em;
+    position: relative;
+    width: 2em;
+}
+.spinnerInner:before, .spinnerInner:after
+{
+    background-color: #777;
+    border-radius: 9999px;
+    content: '';
+    display: block;
+    height: 0.6em;
+    position: absolute;
+    top: 1em;
+    width: 0.6em;
+}
+.spinnerInner:before { left: 0; }
+.spinnerInner:after { right: 0; }
+.spinner, .spinnerInner
+{
+    -webkit-animation-duration: 1.6s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: spinspin;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-duration: 1.6s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-name: spinspin;
+    -moz-animation-timing-function: linear;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-name: spinspin;
+    animation-timing-function: linear;
+}
+
+.gridEditor .gridHeaderContainer
+{
+    overflow: hidden;
+    height: 1.3em;
+    margin-top: 0.3em;
+}
+.gridEditor .gridHeader li
+{
+    display: block;
+    float: left;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 13.636em;
+}
+.gridEditor .gridContainer
+{
+    margin-top: 0.2em;
+    min-height: 5em;
+    max-height: 30em;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding-bottom: 1.2em;
+}
+.gridEditor .gridBody
+{
+    border: 1px solid #c7c7c7;
+    margin-top: 0.2em;
+}
+.gridEditor .gridBody li
+{
+    display: block;
+    float: left;
+    width: 15em;
+}
+.gridEditor .gridBody li input
+{
+    background: transparent;
+    box-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
+    border: none;
+    display: block;
+    font-size: 1.2em;
+    line-height: 16px;
+    outline: none;
+    padding: 0;
+    padding-bottom: 0.333em;
+    width: 12.5em;
+}
+.gridEditor .gridBody li input:nth-child(2n)
+{
+    background: #ededed;
+}
+
+
+/***********
+ * GENERAL *
+ ***********/
+
+h1, h2, h3, h4, h5, h6
+{
+    color: #444;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+
+h3
+{
+    font-size: 1.4em;
+}
+
+a
+{
+    color: #4e647b;
+    text-decoration: none;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+/**********
+ * LAYOUT *
+ **********/
+body
+{
+    background: #f3f3f3;
+    background: #f3f3f3 linear-gradient(to bottom, #fff 0, #f3f3f3 80px) repeat-x top;
+    overflow: hidden;
+}
+
+.header
+{
+    padding: 2em;
+}
+.header h1
+{
+    display: inline-block;
+}
+.header #renameFormField
+{
+    color: #444;
+    display: none;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 2em;
+    letter-spacing: -1px;
+}
+.header #editTitleLink
+{
+    color: #666;
+    text-transform: lowercase;
+}
+.header ul.menu
+{
+    border-left: 1px solid #aaa;
+    display: inline-block;
+    margin-left: 2em;
+    padding-left: 0.5em;
+}
+.header ul.menu li
+{
+    display: inline-block;
+    margin-left: 1em;
+}
+.header ul.menu > li > span
+{
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.4em;
+    letter-spacing: -1px;
+    padding: 0.5em;
+}
+.header ul.menu li:hover,
+.header ul.menu li.open
+{
+    background-color: #f0f0f0;
+}
+.header ul.menu li ul.submenu
+{
+    background-color: #f0f0f0;
+    display: none;
+    padding: 0.2em;
+    position: absolute;
+    z-index: 50;
+}
+.header ul.menu li ul.submenu li
+{
+    display: block;
+    margin-bottom: 0.3em;
+    margin-left: 0;
+}
+.header ul.menu li ul.submenu li.divider
+{
+    border-top: 1px solid #ddd;
+}
+.header ul.menu li ul.submenu li.infoText
+{
+    color: #777;
+    font-size: 1.1em;
+    letter-spacing: -1px;
+    padding: 0.4em;
+}
+.header ul.menu li ul.submenu li a
+{
+    color: #444;
+    display: block;
+    font-size: 1.3em;
+    letter-spacing: -1px;
+    padding: 0.6em;
+    padding-right: 3em;
+}
+.header ul.menu li ul.submenu li.disabled a
+{
+    color: #888;
+}
+.header ul.menu li ul.submenu li a:hover
+{
+    background-color: #fff;
+}
+.header ul.menu li ul.submenu li.disabled a:hover
+{
+    background-color: transparent;
+    cursor: default;
+}
+.header ul.menu li ul.submenu li.checkbox span.icon,
+.header ul.menu li ul.submenu li.radio span.icon
+{
+    display: block;
+    float: left;
+    font-size: 1.2em;
+    min-height: 1px; /* gives empty icons area */
+    width: 1.3em;
+}
+.header ul.menu li ul.submenu li.checkbox.selected a span.icon:before,
+.header ul.menu li ul.submenu li.radio.selected a span.icon:before
+{
+    content: '\e905';
+}
+
+.header .accountStatus
+{
+    font-size: 1.4em;
+    letter-spacing: -1px;
+    position: absolute;
+    right: 2em;
+    top: 2em;
+}
+
+.toolPalette
+{
+    bottom: 1em;
+    left: 1em;
+    user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    position: absolute;
+    z-index: 1;
+}
+.toolPalette .addNewIcon
+{
+    color: #444;
+    display: inline-block;
+    font-size: 1.4em;
+}
+.toolPalette .addNewIcon:before { content: '\e906'; }
+.toolPalette h3
+{
+    display: inline-block;
+    margin-right: 0.5em;
+    position: relative;
+    top: 0.1em;
+}
+.toolPalette ul
+{
+    display: inline-block;
+}
+.toolPalette ul li
+{
+    display: inline-block;
+    font-size: 1.1em;
+    letter-spacing: -1px;
+    margin-left: 1em;
+}
+.toolPalette ul li.separator
+{
+    width: 1em;
+}
+.toolPalette ul li a
+{
+    cursor: pointer;
+    padding: 0.5em;
+}
+.toolPalette ul li a:hover
+{
+    background-color: #4e647b;
+    color: #f3f3f3;
+}
+.toolButton.ui-draggable-dragging
+{
+    display: block;
+    text-indent: -9999px;
+}
+
+.workspaceScrollArea
+{
+    background-color: #e8e8e8;
+    bottom: 3em;
+    left: 0.5em;
+    overflow-y: auto;
+    padding: 1em;
+    position: absolute;
+    right: 30em;
+    top: 6em;
+}
+.workspace
+{
+    user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    padding-bottom: 300px;
+}
+
+.workspaceInnerWrapper
+{
+    background: rgba(96, 122, 96, 0.5);
+    padding: 1em;
+}
+.workspaceInner
+{
+    min-height: 6em;
+    padding-bottom: 3em;
+}
+
+.control
+{
+    margin-bottom: 1.5em;
+    position: relative;
+    transition: 0.3s margin, 0.5s opacity;
+}
+.collapsed .control
+{
+    margin-bottom: 0.8em;
+}
+.control.droppedHead
+{
+    margin-top: -0.5em;
+}
+.control.dropped
+{
+    opacity: 0.7;
+}
+.control.droppedTail
+{
+    margin-bottom: -1.5em;
+}
+.control .controlInfo
+{
+    background: #777 url(/images/control_slice.png) repeat-x bottom;
+    min-height: 76px;
+    padding: 6px;
+    transition: 0.3s padding;
+}
+.collapsed .control .controlInfo
+{
+    min-height: 24px;
+}
+.control .controlInfo .typeIcon
+{
+    margin: 0.5em;
+    margin-right: 2em;
+    position: absolute;
+}
+.collapsed .control .controlInfo .typeIcon
+{
+    margin: 0;
+    margin-right: 1.5em;
+}
+.control .controlInfo .deleteControl
+{
+    position: absolute;
+    text-align: left;
+    text-indent: -9999px;
+    right: 0.5em;
+}
+.control .controlInfo .deleteControl:before
+{
+    color: #eee;
+    content: '\e904';
+    font-size: 1.5em;
+    position: absolute;
+    right: 0;
+    text-indent: 0;
+    top: 0;
+}
+.control .controlInfo .controlHeadline
+{
+    margin-left: 80px;
+}
+.collapsed .control .controlInfo .controlHeadline
+{
+    margin-left: 35px;
+    padding-top: 0.2em;
+}
+.collapsed .control .controlInfo .controlHeadline h4
+{
+    font-size: 1.7em;
+}
+.control .controlInfo .controlLabel
+{
+    color: #f3f3f3;
+    display: inline;
+    font-size: 2em;
+    padding-top: 0.4em;
+}
+.control .controlInfo .controlHint
+{
+    color: #bbb;
+    display: inline;
+    font-size: 1.4em;
+}
+.control .controlInfo .controlName
+{
+    color: #bbb;
+    font-size: 1.4em;
+    margin-left: 80px;
+}
+.collapsed .control .controlInfo .controlName
+{
+    display: none;
+}
+.control .controlInfo .controlProperties
+{
+    color: #bbb;
+    font-size: 1.1em;
+    margin-top: 1.4em;
+    margin-left: 80px;
+}
+.control .controlInfo .controlProperties li
+{
+    display: inline-block;
+    margin-right: 1.5em;
+    text-transform: lowercase;
+}
+.collapsed .control .controlInfo .controlProperties
+{
+    display: none;
+}
+.control .controlSuccessor
+{
+    display: none;
+}
+.control.hasSuccessorBinding .controlInfo
+{
+    padding-bottom: 2.3em;
+}
+.control.hasSuccessorBinding .controlSuccessor
+{
+    display: block;
+    left: 1em;
+    padding-left: 2.2em;
+    position: absolute;
+    top: calc(100% - 2em);
+    z-index: 1;
+}
+.control.hasSuccessorBinding .controlSuccessorArrow
+{
+    background: #61128e;
+    border-radius: 999px;
+    height: 6em;
+    left: 0;
+    position: absolute;
+    width: 1.5em;
+    top: -0.2em;
+}
+.control.hasSuccessorBinding .controlSuccessorArrow:before
+{
+    background: #fff;
+    border-radius: 999px;
+    content: '';
+    display: block;
+    left: 0.5em;
+    height: 0.5em;
+    position: absolute;
+    top: 0.5em;
+    width: 0.5em;
+}
+.control.hasSuccessorBinding .controlSuccessorArrow .bend
+{
+    background: #61128e;
+    border-radius: 999px 0 0 999px;
+    bottom: 0;
+    height: 1.4em;
+    left: 0;
+    position: absolute;
+    width: 2.5em;
+}
+.control.hasSuccessorBinding .controlSuccessorArrow .bend:before
+{
+    border: 0.7em solid transparent;
+    border-left-color: #61128e;
+    border-right-width: 0;
+    content: '';
+    display: block;
+    left: 100%;
+    position: absolute;
+    top: 0;
+}
+.control.hasSuccessorBinding .controlSuccessorCondition
+{
+    color: #fff;
+    font-size: 1.1em;
+}
+.control .controlSuccessor .noSuccessorError
+{
+    display: none;
+    color: #ad0e0e;
+    left: 0;
+    margin-top: 1em;
+    position: absolute;
+    top: 100%;
+    width: 20em;
+}
+.control.hasSuccessorBinding + .control
+{
+    margin-left: 3.5em;
+}
+.control.hasSuccessorBinding + .control.hasSuccessorBinding .controlSuccessorArrow
+{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 3.8em;
+}
+.control.hasSuccessorBinding + .control.hasSuccessorBinding .controlSuccessorArrow .bend
+{
+    height: 0;
+    width: 0;
+}
+.control.hasSuccessorBinding + .control.hasSuccessorBinding .controlSuccessorArrow .bend:before
+{
+    border-width: 0.7em;
+    border-left-color: transparent;
+    border-bottom-width: 0;
+    border-top-color: #61128e;
+    position: absolute;
+}
+.control.hasSuccessorBinding:last-child .controlSuccessorArrow
+{
+    background: #ad0e0e;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 3em;
+}
+.control.hasSuccessorBinding:last-child .controlSuccessorArrow .bend
+{
+    height: 0;
+    width: 0;
+}
+.control.hasSuccessorBinding:last-child .controlSuccessorArrow .bend:before
+{
+    border-width: 0.4em;
+    border-left-color: transparent;
+    border-bottom-width: 0;
+    border-top-color: #ad0e0e;
+    position: absolute;
+}
+.control.hasSuccessorBinding:last-child .controlSuccessorArrow .bend:after
+{
+    border: 0.4em solid transparent;
+    border-bottom-width: 0;
+    border-top-color: #ad0e0e;
+    content: '';
+    display: block;
+    left: 0.7em;
+    position: absolute;
+    top: 0;
+}
+.control.hasSuccessorBinding:last-child .controlSuccessor .noSuccessorError
+{
+    display: block;
+}
+.control.group .groupFooter
+{
+    height: 1em;
+}
+.control .controlFlowArrow, .control.selected:after
+{
+    border: 2em solid transparent;
+    border-bottom-width: 0;
+    border-top-color: #646464;
+    left: 50%;
+    margin-left: -1em;
+    pointer-events: none; /* causes flickering on drag otherwise */
+    position: absolute;
+    z-index: 1;
+}
+.control.selected
+{
+    box-shadow: -0.3em -0.3em 0 #f4b241, 0.3em -0.3em 0 #f4b241, -0.3em 0.3em 0 #f4b241, 0.3em 0.3em 0 #f4b241;
+}
+.control.selected:after
+{
+    border-top-color: #f4b241;
+    content: '';
+    top: calc(100% + 0.3em);
+    z-index: 0;
+}
+.collapsed .control .controlFlowArrow
+{
+    border-width: 1.4em;
+    border-bottom-width: 0;
+    margin-left: -0.7em;
+}
+.control:hover > .controlInfo { background-color: #888; }
+.control:hover > .controlFlowArrow { border-top-color: #727272; }
+
+.control.group > .controlInfo { background-color: #607a60; }
+.control.group > .controlFlowArrow { border-top-color: #516651; }
+.control.group > .groupFooter { background-color: #516651; }
+
+.control.group:hover > .controlInfo { background-color: #6f8d6e; }
+.control.group:hover > .controlFlowArrow { border-top-color: #5d765c; }
+.control.group:hover > .groupFooter { background-color: #5d765c; }
+
+.control.error > .controlInfo, .control.group.error > .controlInfo { background-color: #a20f0f; }
+.control.error > .controlFlowArrow, .control.group.error > .controlFlowArrow { border-top-color: #880d0d; }
+.control.error > .groupFooter, .control.group.error > .groupFooter { background-color: #880d0d; }
+
+.control.error:hover > .controlInfo { background-color: #c34141; }
+.control.error:hover > .controlFlowArrow { border-top-color: #a43737; }
+.control.error:hover > .groupFooter { background-color: #a43737; }
+
+.control.dragging
+{
+    opacity: 0.4;
+}
+body > .control.last .controlFlowArrow,
+.workspace .control:last-child > .controlFlowArrow,
+.workspace .control:last-child:after
+{
+    display: none;
+}
+
+.control.slave
+{
+    margin-top: -1.2em;
+}
+.control.slave .controlInfo
+{
+    min-height: 56px;
+}
+.control.slave .deleteControl,
+.control.slave .typeIcon
+{
+    display: none;
+}
+
+#dragIcon
+{
+    left: -10em;
+    position: absolute;
+    top: -10em;
+}
+#dragIcon .miniControl
+{
+    background-color: #777;
+    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.2);
+    height: 1.4em;
+    position: relative;
+    width: 3em;
+}
+#dragIcon .miniControl:after
+{
+    border: 0.6em solid transparent;
+    border-bottom-width: 0;
+    border-top-color: #777;
+    content: '';
+    display: block;
+    left: calc(50% - 0.6em);
+    position: absolute;
+    top: 100%;
+}
+#dragIcon .count
+{
+    background: #a20f0f;
+    border-radius: 99em;
+    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-weight: bold;
+    left: 2.5em;
+    min-width: 0.8em;
+    padding: 0.2em 0.3em;
+    position: absolute;
+    text-align: center;
+    top: 0.8em;
+}
+
+#placeholder
+{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    bottom: 0.8em;
+    margin-bottom: -2px;
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+}
+
+#placeholder:after
+{
+    border: 0.8em solid transparent;
+    border-left-width: 0;
+    border-right-color: rgba(0, 0, 0, 0.4);
+    content: '';
+    display: block;
+    position: absolute;
+    left: calc(100% + 0.2em);
+    top: -0.7em;
+}
+
+/* for sole child in a group, don't shift up to give more room. */
+.workspaceInner > #placeholder:first-child:last-child
+{
+    bottom: 0;
+}
+
+.propertiesPane
+{
+    bottom: 20em;
+    margin-bottom: 1em;
+    overflow-y: auto;
+    padding: 1em;
+    position: absolute;
+    right: 0.5em;
+    top: 6em;
+    width: 27em;
+}
+.suppressInformation .propertiesPane
+{
+    bottom: 0.5em !important;
+}
+
+.propertiesPane .propertyList > li
+{
+    margin-top: 1em;
+    padding-left: 1em;
+}
+.propertiesPane .propertyList > li:hover
+{
+    background-color: #eaeaea;
+}
+.propertiesPane .propertyList li.error
+{
+    background-color: #fbeeee;
+}
+.propertiesPane .propertyList li.error h4
+{
+    color: #a20f0f;
+}
+.propertiesPane .propertyList li.advanced
+{
+    border-top: 1px dashed #aaa;
+    padding-top: 0.5em;
+}
+.propertiesPane .propertyList li.emptyData
+{
+    color: #999;
+    font-size: 1.2em;
+    margin-top: 10em;
+    text-align: center;
+}
+.propertiesPane .propertyList > li.disabled
+{
+    opacity: 0.4;
+    pointer-events: none;
+}
+.propertiesPane .propertyList li h4
+{
+    font-size: 1.3em;
+    margin-left: -0.769em;
+    padding-bottom: 0.2em;
+}
+.propertiesPane .propertyList li a.optionsEditorLink
+{
+    float: right;
+    padding: 0.2em;
+    text-transform: lowercase;
+}
+.propertiesPane .propertyList li p
+{
+    color: #666;
+    font-size: 0.9em;
+    padding: 0.2em 0 0.3em;
+}
+.propertiesPane .propertyList input[type="text"]
+{
+    width: calc(100% - 0.5em);
+}
+.propertiesPane .propertyList li .bool,
+.propertiesPane .propertyList li .numericRange,
+.propertiesPane .propertyList li .otherEditor
+{
+    margin-left: -1em;
+}
+.propertiesPane .propertyList li .bool label,
+.propertiesPane .propertyList li .numericRange label,
+.propertiesPane .propertyList li .otherEditor label
+{
+    color: #444;
+    font-size: 1.3em;
+    letter-spacing: -1px;
+}
+.propertiesPane .propertyList li .numericRange h5,
+.propertiesPane .propertyList li .numericRange input[type="text"],
+.propertiesPane .propertyList li .numericRange .inclusive
+{
+    margin-left: 2.2em;
+}
+.propertiesPane .propertyList li .numericRange input[type="text"]
+{
+    width: 19.5em;
+}
+.propertiesPane .propertyList li .otherEditor .otherValue
+{
+    padding-left: 2.1em;
+}
+.propertiesPane .propertyList li h5
+{
+    font-size: 1.1em;
+}
+.propertiesPane .propertyList li.advanced
+{
+    padding-left: 0;
+}
+.propertiesPane .propertyList li.advanced a.toggle
+{
+    color: #444;
+    font-size: 1.4em;
+    letter-spacing: -1px;
+}
+.propertiesPane .advancedProperties
+{
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 1em;
+    transition: 0.4s max-height;
+}
+.propertiesPane .advancedProperties .propertyItem
+{
+    padding-left: 1em;
+}
+.propertiesPane .propertyList input[type="text"]
+{
+    width: calc(100% - 1em);
+}
+.propertiesPane .propertyList.showAdvanced .advancedProperties
+{
+    max-height: 20em
+}
+
+.propertiesPane .propertyList li .optionsList
+{
+    padding-left: 1em;
+}
+.propertiesPane .propertyList li .optionsList li
+{
+    margin-bottom: 0.5em;
+}
+.propertiesPane .propertyList li .optionsList .optionsEditorValueField + .optionsEditorValueField
+{
+    margin-top: 0.5em;
+}
+.propertiesPane .propertyList li .addOption
+{
+    display: block;
+    font-size: 1.2em;
+    letter-spacing: -1px;
+    padding: 0.5em 0;
+}
+.propertiesPane .propertyList li .removeOption
+{
+    display: inline-block;
+    float: right;
+    margin-right: 0.5em;
+    position: relative;
+    text-align: left;
+    text-indent: -9999px;
+    width: 1.3em;
+}
+.propertiesPane .propertyList li .removeOption:before
+{
+    color: #333;
+    content: '\e904';
+    font-size: 1.3em;
+    position: absolute;
+    right: 0;
+    text-indent: 0;
+    top: 0;
+}
+.propertiesPane .propertyList li .errorList li
+{
+    color: #a20f0f;
+}
+
+.propertiesPane .propertyList li.advanced .icon
+{
+    color: #333;
+    float: right;
+}
+.propertiesPane .propertyList li.advanced .icon:before
+{
+    content: '\e901';
+}
+.propertiesPane .propertyList.showAdvanced li.advanced .icon:before
+{
+    content: '\e900';
+}
+
+.nonOptional .editorEnabled {
+    display: none;
+}
+.hideInclusivity .inclusiveCtrl, .property-length .inclusiveCtrl, .property-count .inclusiveCtrl {
+    display: none;
+}
+
+.helpPane
+{
+    background-color: #eaeaea;
+    bottom: 0.5em;
+    height: 20em;
+    overflow-y: auto;
+    position: absolute;
+    right: 0.5em;
+    width: 29em;
+    z-index: 1;
+}
+.suppressInformation .helpPane
+{
+    display: none;
+}
+
+.helpPane h3
+{
+    background-color: #ddd;
+    padding: 0.714em;
+}
+.helpPane.hasHelp .helpPane-title:after
+{
+    content: ':';
+}
+
+.helpPane .helpItem
+{
+    display: none;
+    padding: 1em;
+}
+.helpPane .helpItem.helpNone
+{
+    display: block;
+}
+
+.helpPane p
+{
+    font-size: 1.2em;
+    line-height: 1.1em;
+}
+.helpPane li
+{
+    border-bottom: 1px solid #ccc;
+    color: #555;
+    font-size: 1.1em;
+    padding: 0.5em 0 0.7em;
+}
+.helpPane li:last-child
+{
+    border-bottom: none;
+}
+.helpPane .key
+{
+    background: #fff;
+    border-radius: 0.2em;
+    box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 0.2em;
+    padding: 0.2em 0.4em;
+}
+
+/* pop the help pane up just a bit to make room for toolbar controls */
+@media(max-width: 1125px)
+{
+    .helpPane { bottom: 3em; }
+    .propertiesPane { margin-bottom: 3.5em; }
+
+    .suppressInformation .propertiesPane { bottom: 3em !important; }
+}
+
+/* hide "Add new" text to make yet more room */
+@media(max-width: 830px)
+{
+    .toolPalette h3 { display: none; }
+}
+
+/* compress spacing/margins to make even more room */
+@media(max-width: 775px)
+{
+    .toolPalette ul li { margin-left: 0.5em; }
+    .toolPalette ul li.separator { display: none; }
+}
+
+/* any smaller (~<650px) and the layout is impractical on more general terms so forget it. */
+
+/**********
+ * MODALS *
+ **********/
+
+.signinDialog .signupLink.hide,
+.signinDialog .signinLink.hide,
+.signinDialog .passwordLink.hide,
+.signinDialog .signup_section
+{
+    display: none;
+}
+.signinDialog form input
+{
+    margin-left: 12em;
+}
+.signinDialog .offlineNotice
+{
+    background-color: #eee;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    margin: 0 0.5em;
+    padding: 0.5em 0.8em;
+}
+
+.accountDialog p
+{
+    margin-top: 1em;
+}
+.accountDialog form input
+{
+    margin-left: 14em;
+}
+
+.openDialog .formList
+{
+    max-height: 30em;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.openDialog .formList li.loading,
+.openDialog .formList li.loading:hover
+{
+    background: transparent url(/images/loading.gif) no-repeat;
+    display: block;
+    height: 19px;
+    text-indent: -9999px;
+    width: 220px;
+}
+.openDialog .formList li
+{
+    background-color: #f6f6f6;
+    cursor: pointer;
+    font-size: 1.3em;
+    padding: 0.5em;
+    position: relative;
+}
+.openDialog .formList li:hover
+{
+    background-color: #ddd;
+}
+.openDialog .formList li.selected,
+.openDialog .formList li.selected:hover
+{
+    background-color: #888;
+    color: #fff;
+}
+.openDialog .formList li a.deleteFormLink
+{
+    color: #333;
+    display: block;
+    font-size: 1.1em;
+    position: absolute;
+    right: 0.3em;
+    text-align: left;
+    text-indent: -9999px;
+    top: 0.45em;
+    width: 1.3em;
+}
+.openDialog .formList li a.deleteFormLink:before
+{
+    content: '\e904';
+    position: absolute;
+    right: 0;
+    text-indent: 0;
+    top: 0;
+}
+.openDialog .formList li.selected a.deleteFormLink
+{
+    color: #eee;
+}
+
+.exportDialog .exportCodeContainer
+{
+    max-height: 30em;
+    overflow: auto;
+}
+.exportDialog #downloadFrame
+{
+    height: 1px;
+    overflow: hidden;
+    width: 1px;
+}
+
+.optionsEditorDialog .presetsLabel
+{
+    font-size: 1.2em;
+}
+.optionsEditorDialog .presetsButtonContainer
+{
+    display: inline-block;
+    margin: 0.4em;
+}
+
+.translationsDialog .addTranslation
+{
+    margin-left: 0.8em;
+}
+.translationsDialog .translationList li
+{
+    font-size: 1.1em;
+    padding: 0.3em;
+    width: 20em;
+}
+.translationsDialog .translationList li .removeTranslation
+{
+    float: right;
+}
+
+.aggregateDialog .aggregateInstanceName
+{
+    width: calc(100% - 7.6em);
+}
+.aggregateDialog .note
+{
+    display: block;
+    padding-top: 0.3em;
+}
+.aggregateDialog #aggregateUser
+{
+    width: 9.5em;
+}
+
+.titlelessModal
+{
+    padding-top: 4em;
+}
+
+.narrowModal
+{
+    margin-left: -20em;
+    width: 40em;
+}
+
+.formPropertiesDialog input
+{
+    margin-left: 10em;
+    width: calc(100% - 10em);
+}
+.formPropertiesDialog p
+{
+    font-size: 1.1em;
+    padding-left: 10em;
+}
+
+.errorMessage p
+{
+    color: #f00;
+}
+
+.loadingScreen
+{
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 9999;
+}
+.loadingScreen .spinner
+{
+    right: calc(100% + 1em);
+    top: 0.5em;
+    position: absolute;
+}
+.loadingScreen .loadingMessage
+{
+    height: 10em;
+    left: 50%;
+    margin-left: -11em;
+    margin-top: -5em;
+    position: absolute;
+    top: 50%;
+    width: 22em;
+}
+.loadingScreen h1
+{
+    color: #888;
+    padding-left: 0.333em;
+}
+.loadingScreen h1 strong
+{
+    color: #444;
+    font-weight: normal;
+}
+.loadingScreen h1 sup
+{
+    font-size: 0.8em;
+    vertical-align: super;
+}
+.loadingScreen p
+{
+    color: #555;
+    padding-left: 0.8em;
+}
+.loadingScreen .status
+{
+    padding-top: 1em;
+}
+
+/***********
+ * SPRITES *
+ ***********/
+
+.toolButton .typeIcon,
+.control .typeIcon
+{
+    background: transparent url(/images/type_icons.png) no-repeat;
+    height: 64px;
+    width: 64px;
+}
+/* grouping/branching go first due to precedence+nesting */
+.group .typeIcon           { background-position: 0 -448px; }
+.branch .typeIcon          { background-position: 0 -512px; }
+.inputText .typeIcon       { background-position: 0 0px; }
+.inputNumeric .typeIcon    { background-position: 0 -64px; }
+.inputDate .typeIcon       { background-position: 0 -128px; }
+.inputLocation .typeIcon   { background-position: 0 -192px; }
+.inputMedia .typeIcon      { background-position: 0 -256px; }
+.inputSelectOne .typeIcon  { background-position: 0 -320px; }
+.inputSelectMany .typeIcon { background-position: 0 -384px; }
+.inputBarcode .typeIcon    { background-position: 0 -576px; }
+.inputTime .typeIcon    { background-position: 0 -640px; }
+
+.collapsed .control .controlInfo .typeIcon
+{
+    background-image: url(/images/type_icons_small.png?1);
+    height: 20px;
+    width: 20px;
+}
+.collapsed .group .typeIcon           { background-position: 0 -168px; }
+.collapsed .branch .typeIcon          { background-position: 0 -192px; }
+.collapsed .inputText .typeIcon       { background-position: 0 0px; }
+.collapsed .inputNumeric .typeIcon    { background-position: 0 -24px; }
+.collapsed .inputDate .typeIcon       { background-position: 0 -48px; }
+.collapsed .inputLocation .typeIcon   { background-position: 0 -72px; }
+.collapsed .inputMedia .typeIcon      { background-position: 0 -96px; }
+.collapsed .inputSelectOne .typeIcon  { background-position: 0 -120px; }
+.collapsed .inputSelectMany .typeIcon { background-position: 0 -144px; }
+.collapsed .inputBarcode .typeIcon    { background-position: 0 -216px; }
+.collapsed .inputTime .typeIcon    { background-position: 0 -240px; }
+

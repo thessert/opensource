@@ -1,0 +1,19 @@
+development:
+  cookie_secret: sample
+  cookie_ssl_only: false
+  database:
+    host: localhost
+    database: odkbuild
+    user: odkbuild
+    password: odkbuild
+
+test:
+  cookie_secret: sample
+
+staging:
+  cookie_secret: sample
+
+production:
+  cookie_secret: sample
+  google_analytics_id: UA-12345678-9
+
